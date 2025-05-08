@@ -3,6 +3,7 @@ package com.etecc.journalApp.service;
 import com.etecc.journalApp.entity.JournalEntry;
 import com.etecc.journalApp.entity.User;
 import com.etecc.journalApp.repository.UserRepo;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -36,7 +37,7 @@ public class UserService {
         return userRepo.findAll();
     }
 
-    public Optional<User> findById(Long id){
+    public Optional<User> findById(ObjectId id){
         return userRepo.findById(id);
     }
 
@@ -44,7 +45,7 @@ public class UserService {
         return userRepo.findByUserName(userName);
     }
 
-    public void deleteById(Long id){
+    public void deleteById(ObjectId id){
         userRepo.deleteById(id);
     }
 }
