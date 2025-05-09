@@ -1,6 +1,5 @@
 package com.etecc.journalApp.service;
 
-import com.etecc.journalApp.entity.JournalEntry;
 import com.etecc.journalApp.entity.User;
 import com.etecc.journalApp.repository.UserRepo;
 import org.bson.types.ObjectId;
@@ -9,7 +8,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -22,14 +20,13 @@ public class UserService {
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
 
-    public void saveEntry(User user){
+    public void saveNewUser(User user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRoles(Arrays.asList("USER"));
         userRepo.save(user);
     }
 
-    public void saveNewUser(User user){
-
+    public void saveUser(User user){
         userRepo.save(user);
     }
 
